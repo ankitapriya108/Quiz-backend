@@ -23,7 +23,7 @@ import express from "express";
 
     const username = process.env.MONGO_USERNAME;
     const password = encodeURIComponent(process.env.MONGO_PASSWORD);
-    const dbName = "Quiz"
+    const dbName = "quiz"
 
   
 
