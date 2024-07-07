@@ -52,30 +52,6 @@ router.post('/login', async (req, res) => {
 
 
 
-// Login user
-router.post('/login', async (req, res) => {
-    try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(404).send('User not found');
-        }
-
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).send('Invalid');
-        }
-
-        user.last_login_date = Date.now();
-        await user.save();
-
-        res.json(user);
-    } catch (error) {
-        console.error("Error", error);
-        res.status(500).send('Error');
-    }
-});
-
 
 
 
